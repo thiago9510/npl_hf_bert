@@ -1,17 +1,28 @@
-from transformers import pipeline 
+from transformers import pipeline
 
-# Carregando o modelo e o tokenizador neuralmind/bert-large-portuguese-cased / neuralmind/bert-large-portuguese-cased-squad
-qa_pipeline = pipeline("question-answering", model="neuralmind/bert-large-portuguese-cased", device=0)
+# Configurando o pipeline de QA
+qa_pipeline = pipeline(
+    "question-answering",
+    #model="neuralmind/bert-large-portuguese-cased",
+    #tokenizer="neuralmind/bert-large-portuguese-cased",
+    model="unicamp-dl/pt-br-t5-small-qg",
+    tokenizer="unicamp-dl/pt-br-t5-small-qg",
+    device=0
+)
 
 # Contexto e pergunta
-context = "Python é uma linguagem de programação de alto nível, muito usada em ciência de dados, inteligência artificial e automação de scripts. Criada por Guido van Rossum, ela é fácil de aprender, o que o torna uma excelente escolha para iniciantes."
+contexto = (
+    "João é engenheiro de software e trabalha em uma empresa de tecnologia há cinco anos. "
+    "Ele é especializado em desenvolvimento de sistemas back-end e está atualmente aprendendo "
+    "sobre machine learning. No tempo livre, João gosta de jogar futebol e estudar inteligência "
+    "artificial. Ele também é voluntário em projetos que promovem a inclusão digital em comunidades carentes."
+)
 
-question = "Quem criou o Python?"
+pergunta = "Em qual área João é especializado no trabalho?"
 
-# Resposta
-response = qa_pipeline({
-    'context': ( 'gere um texto detlhado com base nas informações a seguir:' + context),
-    'question': question
-})
+# Fazendo a predição
+resultado = qa_pipeline(question=pergunta, context=contexto)
 
-print("Resposta:", response['answer'])
+# Exibindo o resultado
+print("Resposta:", resultado["answer"])
+print("Confiança:", resultado["score"])
