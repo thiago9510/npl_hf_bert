@@ -5,8 +5,8 @@ qa_pipeline = pipeline(
     "question-answering",
     #model="neuralmind/bert-large-portuguese-cased",
     #tokenizer="neuralmind/bert-large-portuguese-cased",
-    model="unicamp-dl/pt-br-t5-small-qg",
-    tokenizer="unicamp-dl/pt-br-t5-small-qg",
+    model="pierreguillou/bert-large-cased-squad-v1.1-portuguese",
+    tokenizer="pierreguillou/bert-large-cased-squad-v1.1-portuguese",
     device=0
 )
 
@@ -18,7 +18,7 @@ contexto = (
     "artificial. Ele também é voluntário em projetos que promovem a inclusão digital em comunidades carentes."
 )
 
-pergunta = "Em qual área João é especializado no trabalho?"
+pergunta = "do que ele gosta alé, de jogar futebol ?"
 
 # Fazendo a predição
 resultado = qa_pipeline(question=pergunta, context=contexto)

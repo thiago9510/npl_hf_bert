@@ -2,7 +2,14 @@
 from transformers import pipeline
 
 # Carregar o pipeline de pergunta e resposta
-qa_pipeline = pipeline("question-answering")
+qa_pipeline = pipeline(
+    "question-answering",
+    #model="neuralmind/bert-large-portuguese-cased",
+    tokenizer="pierreguillou/bert-large-cased-squad-v1.1-portuguese",
+    model="pierreguillou/bert-large-cased-squad-v1.1-portuguese",
+    #tokenizer="gpt2,
+    device=0
+)
 
 # Banco de contextos para definir o que será usado na resposta
 context_database = [

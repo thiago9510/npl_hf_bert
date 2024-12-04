@@ -11,6 +11,10 @@ git config --global user.email "seu_email@exemplo.com"
 # iniciando o ambiente
 source env/bin/activate
 
+# banco de dados (oinecone)
+pip install pinecone-client sentence-transformers
+
+
 
 ## Exemplo de Treinamento por Batches com o Hugging Face,
 ## datasets públicos e prontos para realizar o fine-tuning e treinar o neuralmind/bert-large-portuguese-cased para realizar QeA (Perguntas e Respostas)
