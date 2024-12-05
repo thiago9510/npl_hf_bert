@@ -20,7 +20,7 @@ As pessoas permanecem contagiosas por até duas semanas e podem espalhar o víru
 model_name = 'pierreguillou/bert-large-cased-squad-v1.1-portuguese'
 nlp = pipeline("question-answering", model=model_name, tokenizer="pierreguillou/bert-large-cased-squad-v1.1-portuguese", device=0)
 
-question = "Quando começou a pandemia de Covid-19 no mundo?"
+question = "Quanto tempo dura o contagio da covid 19 ?"
 
 result = nlp(question=question, context=context)
 
